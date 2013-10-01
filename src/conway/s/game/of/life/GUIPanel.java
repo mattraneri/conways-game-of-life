@@ -212,4 +212,8 @@ public class GUIPanel extends JPanel implements MouseListener{
     public static GameCell[][] getCells() {
         return grid;
     }
+    
+    public static void setCells(GameCell[][] newGrid) {
+        grid = newGrid;
+    }
 }

@@ -16,10 +16,11 @@ import javax.swing.JOptionPane;
  *
  * @author matt
  */
-public class MenuBar extends JMenuBar implements ActionListener{
+public class MenuBar extends JMenuBar implements ActionListener {
+
     JMenu file = new JMenu("File");
-    public MenuBar()
-    {
+
+    public MenuBar() {
         JMenuItem save = new JMenuItem("Save");
         JMenuItem load = new JMenuItem("Load");
         JMenuItem exit = new JMenuItem("Exit");
@@ -31,6 +32,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
         file.add(options);
         exit.addActionListener(this);
         options.addActionListener(this);
+        load.addActionListener(this);
         file.add(exit);
         this.add(file);
     }
@@ -45,7 +47,10 @@ public class MenuBar extends JMenuBar implements ActionListener{
                 GUIFrame.saveGame();
                 break;
             case "Options...":
-                JOptionPane.showMessageDialog(this, "Not yet implemented.");
+                JOptionPane.showMessageDialog(null, "Not yet implemented.");
+                break;
+            case "Load":
+                GUIFrame.loadGame();
                 break;
         }
     }
