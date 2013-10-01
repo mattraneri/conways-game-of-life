@@ -5,10 +5,13 @@
 package conway.s.game.of.life;
 
 import java.awt.BorderLayout;
+import java.io.BufferedWriter;
 import java.io.File;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.JFileChooser;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,8 +46,32 @@ public class GUIFrame extends JFrame {
             System.out.println(e.getMessage());
         }
     }
+    
+    private static void error() {
+        JOptionPane.showMessageDialog(null, "This shouldn't happen..");
+    }
 
     public static void saveGame() {
-        
+        GameCell[][] cells = GUIPanel.getCells();
+        try {
+            Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("save.txt"), "UTF-8"));
+            for (int i = 0; i < cells.length; i++) {
+                for (int j = 0; j < cells.length; j++) {
+                    if(cells[i][j].isVisible())
+                    {
+                        out.write("1");
+                    } else {
+                        out.write("0");
+                    }
+                }
+                out.write("\n");
+            }
+            out.close();
+        } catch (Exception e) {
+            System.out.println("This shouldn't ever happen...");
+            error();
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Saved successfully.");
     }
 }

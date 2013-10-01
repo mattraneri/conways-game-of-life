@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * @author matt
  */
 public class GUIPanel extends JPanel implements MouseListener{
-    GameCell[][] grid = new GameCell[50][50]; //Think- 500 by 500, 50 by 50, 10 pixels each
+    private static GameCell[][] grid = new GameCell[50][50]; //Think- 500 by 500, 50 by 50, 10 pixels each
     public GUIPanel()
     {//Got the columns and rows messed up, oops
         this.setBackground(Color.BLACK);
@@ -207,5 +207,9 @@ public class GUIPanel extends JPanel implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public static GameCell[][] getCells() {
+        return grid;
     }
 }

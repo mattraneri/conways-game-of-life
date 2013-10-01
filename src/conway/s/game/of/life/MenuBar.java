@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +30,7 @@ public class MenuBar extends JMenuBar implements ActionListener{
         file.add(load);
         file.add(options);
         exit.addActionListener(this);
+        options.addActionListener(this);
         file.add(exit);
         this.add(file);
     }
@@ -41,6 +43,9 @@ public class MenuBar extends JMenuBar implements ActionListener{
                 break;
             case "Save":
                 GUIFrame.saveGame();
+                break;
+            case "Options...":
+                JOptionPane.showMessageDialog(this, "Not yet implemented.");
                 break;
         }
     }
